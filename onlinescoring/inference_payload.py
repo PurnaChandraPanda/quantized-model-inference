@@ -27,16 +27,7 @@ class InferencePayload(SerializableDataClass):
         """Create an instance of InferencePayload from input data received from the server."""
         query, params, task_type, is_preview_format = get_request_data(input_data, model_config)
         return InferencePayload(query, params, task_type, is_preview_format)
-
-    def convert_query_to_list(self) -> None:
-        """Convert the query parameter into a list.
-
-        FMScore.run expects a list of prompts. In the case of chat completion, a single string
-        is produced and needs to be put inside of a list.
-        """
-        if not isinstance(self.query, list):
-            self.query = [self.query]
-
+    
     def update_params(self, new_params: Dict) -> None:
         """Update current parameters to the new parameters the InferencePayload should have."""
         self.params = new_params
