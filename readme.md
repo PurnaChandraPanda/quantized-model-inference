@@ -47,3 +47,4 @@ Traceback (most recent call last):
 TypeError: 'coroutine' object is not callable
 INFO:     ::1:42174 - "POST /v1/chat/completions HTTP/1.1" 500 Internal Server Error
 ```
+Filed [issue](https://github.com/abetlen/llama-cpp-python/issues/1857#issue-2726895443) with owner llama-cpp-python for investigation.
