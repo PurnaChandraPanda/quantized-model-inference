@@ -20,3 +20,8 @@ gh repo create quantized-model-inference --public --source=. --remote=origin
 git branch -M main
 git push -u origin main
 
+## recurring check-in
+git add .
+git status
+git commit -m "xxx"
+git push -u origin main
