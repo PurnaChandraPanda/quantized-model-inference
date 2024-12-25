@@ -21,6 +21,7 @@ git branch -M main
 git push -u origin main
 
 ## recurring check-in
+git status
 git add .
 git status
 git commit -m "xxx"

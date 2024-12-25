@@ -12,7 +12,7 @@ from constants import TaskType
 class LllamcppClient():
     def __init__(self, local_api_url: str):
         self._local_api_url = local_api_url
-
+        self._tokenize_api_url = f"{self._local_api_url}/extras/tokenize"
         self._api_url = None
         self._task_type = None
 
@@ -93,28 +93,41 @@ class LllamcppClient():
             completion_tokens = output["usage"]["completion_tokens"]
 
             inference_time_ms = (end_time - start_time) * 1000
-            # response_tokens = self._get_tokens(generated_text)
-            # time_per_token_ms = inference_time_ms / len(response_tokens) if len(response_tokens) > 0 else 0
-            n_generated_tokens = completion_tokens            
-            time_per_token_ms = inference_time_ms / n_generated_tokens if n_generated_tokens > 0 else 0
+            response_tokens = self._get_tokens(generated_text)
+            time_per_token_ms = inference_time_ms / len(response_tokens) if len(response_tokens) > 0 else 0
 
             res = InferenceResult(
-                generated_text, inference_time_ms, time_per_token_ms, 0, n_generated_tokens, None,
+                generated_text, inference_time_ms, time_per_token_ms, 0, response_tokens,
                 n_prompt_tokens=prompt_tokens, n_completion_tokens=completion_tokens
                 )
         else:
-            res = InferenceResult(None, None, None, None, None, None, None, error=response.content)
+            res = InferenceResult(None, None, None, None, None, None, error=response.content)
 
         return res
 
-    # def _get_tokens(self, response: str):
-        # """Load tokenizer and get tokens from a prompt."""
+    def _get_tokens(self, response_text: str):
+        """Load tokenizer and get tokens from a prompt. 
+        In this case, will leverage /extras/tokenize api of server."""
         # if not hasattr(self, "tokenizer"):
         #     if getattr(self.engine_config, "tokenizer", None) is not None:
         #         self.tokenizer = AutoTokenizer.from_pretrained(self.engine_config.tokenizer, trust_remote_code=True)
         #     else:
         #         self.tokenizer = AutoTokenizer.from_pretrained(self.engine_config.model_id, trust_remote_code=True)
         # tokens = self.tokenizer.encode(response)
-        
+
+        headers = {
+            "user-agent": "llama-cpp client"
+        }
+        payload = {
+                "input": response_text
+            }
+        # print("tokenize payload: ", payload)
+        response = requests.post(self._tokenize_api_url, headers=headers, json=payload)
+        if response.status_code == 200:
+            output = json.loads(response.content)
+            tokens = output["tokens"]
+        elif response.status_code == 500:
+            tokens = []
+
         # print("tokens: ", tokens)
-        # return tokens
+        return tokens

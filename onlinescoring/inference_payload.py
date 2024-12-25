@@ -32,6 +32,15 @@ class InferencePayload(SerializableDataClass):
         """Update current parameters to the new parameters the InferencePayload should have."""
         self.params = new_params
 
+    def convert_query_to_list(self) -> None:
+        """Convert the query parameter into a list.
+
+        The engine.run() expects a list of prompts. In the case of chat completion, a single string
+        is produced and needs to be put inside of a list.
+        """
+        if not isinstance(self.query, list):
+            self.query = [self.query]
+
 def get_request_data(
     data,
     model_config: Optional[Dict] = None
@@ -112,18 +121,26 @@ class InferenceResult:
     inference_time_ms: float
     time_per_token_ms: float    
     prompt_num: int
-    n_generated_tokens: Optional[int] = None
     generated_tokens: List[Any] = None
     error: Optional[str] = None
     scores: Optional[List[Any]] = None
     n_prompt_tokens: Optional[int] = None
     n_completion_tokens: Optional[int] = None
 
+    def _reset_gen_tokens(self):
+        """Hide the gnerated tokens - save the space from printing."""
+        self.generated_tokens = None
+
     def print_results(self):
-        """Print the inference results of a single prompt."""
+        """Print the inference results of a single prompt.
+        Also, mask the generated tokens."""
         if self.error:
             msg = f"## Inference Results ##\n ERROR: {self.error}"
-        else:            
-            msg = f""" ## Prompt {self.prompt_num} Results ##\n Total Tokens Generated: {self.n_generated_tokens if self.n_generated_tokens is not None else 0}"""
+        else:
+            msg = f""" ## Prompt {self.prompt_num} Results ##\n Total Tokens Generated: {len(self.generated_tokens)}"""
         print(msg)
 
+        # reset generated tokens
+        self._reset_gen_tokens()
+
+    
