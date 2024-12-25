@@ -6,3 +6,7 @@ update engine logic to accommodate other llm lightweight inference servers, such
 
 ### 2
 along with gguf, add support to host mlflow model format too
+
+### 3
+- add logic, how to bring in models/ from hf or model catalog
+- also add logic how to quantize public models
