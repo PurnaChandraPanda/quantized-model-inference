@@ -16,7 +16,7 @@
 conda activate azureml_py310_sdkv2
 pip install -U azure-ai-ml
 ```
-- This sample is tested with python package: llama-cpp-python==0.3.2.
+- This sample is tested with python package: `llama-cpp-python==0.3.2`, and also `0.3.5` (latest one).
 
 ## Run 
 ### Inference phi3 gguf model
