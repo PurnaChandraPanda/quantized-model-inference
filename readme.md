@@ -25,8 +25,6 @@ RUN CMAKE_ARGS="-DGGML_CUDA=on -DGGML_CUDA_FORCE_CUBLAS=on -DLLAVA_BUILD=off -DC
         ## If yes, load model on GPUs for inferencing. Else, load model CPUs for inferencing.
         if 'NVIDIA_VISIBLE_DEVICES' in env:
             cmd = ["python", "-m", "llama_cpp.server", "--model", self._model_path, "--n_gpu_layers", "-1"]
-            # Set the flag to True as its running on GPU
-            self._is_cuda_visible = True
 ```
 ## Pre-requisites
 - In azureml compute instance, use v2 conda env and updated `azure-ai-ml` package.
