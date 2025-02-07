@@ -27,10 +27,9 @@ git push -u origin main
 ```
 git status
 git add .
-git restore --staged . # optional: if like to undo `git add .`
-git status
+git restore --staged . # optional: if like to undo `git add .`, make changes now
+git status # will see required files
 git add .
-
 git commit -m "xxx"
 git push -u origin main
 ```
