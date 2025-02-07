@@ -1,0 +1,10 @@
+name: hfenv
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip:
+    - huggingface-hub
+    - mlflow
+    - azureml-mlflow
+    - azure-ai-ml

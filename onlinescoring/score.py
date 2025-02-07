@@ -35,6 +35,10 @@ def init():
     model_dir = os.getenv("AZUREML_MODEL_DIR")
     if model_dir:
         for root, dirs, files in os.walk(model_dir):
+            # Sort files alphabetically as in-place
+            ## trying to find a way out in case there's multiple gguf files in the directory
+            ## idea is to read the first gguf file if multiple files are present and order maintained
+            files.sort() 
             for file in files:
                 full_path = os.path.join(root, file)
                 if file.endswith('.gguf'):

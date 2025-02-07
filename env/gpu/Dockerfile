@@ -38,7 +38,11 @@ ENV LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 # Switch to root user again
 USER root
 
+# Install net-tools for netstat support
 RUN apt-get update && apt-get install -y net-tools
+
+# Install git
+RUN apt-get update && apt-get install -y git
 
 # Setting build related env vars
 ENV GGML_CUDA=1
@@ -50,7 +54,7 @@ RUN python3 -m pip install --upgrade pip pytest cmake scikit-build setuptools fa
 # Install llama-cpp-python (build with cuda)
 # Cuda arch: 80 is used for A100 machines in the args param {DCMAKE_CUDA_ARCHITECTURES}.
 # Note: For respective cuda arch, the respective GPU SKU machine mapping cuda arch value should be used.
-RUN CMAKE_ARGS="-DGGML_CUDA=on -DGGML_CUDA_FORCE_CUBLAS=on -DLLAVA_BUILD=off -DCMAKE_CUDA_ARCHITECTURES=80" FORCE_CMAKE=1 pip install llama-cpp-python --no-cache-dir
+RUN CMAKE_ARGS="-DGGML_CUDA=on -DGGML_CUDA_FORCE_CUBLAS=on -DLLAVA_BUILD=off -DCMAKE_CUDA_ARCHITECTURES=80" FORCE_CMAKE=1 pip install llama-cpp-python==0.3.7 --no-cache-dir
 
 # Install ml endpoint scoring related packages
 RUN pip install mlflow

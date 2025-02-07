@@ -42,6 +42,10 @@ In any model inferencing, following steps are carried out as base actions.
 - Create managed online deployment for the endpoint
 - Test the online endpoint
 
+### Inference deepseek-r1-gguf model
+- Download model and register the large size [deepseek-r1-gguf model from hf](./inference-deepseekr1-gguf-gpu/)
+- Run the notebook for deepseek-r1 model [hosting and inferencing](./inference-deepseekr1-gguf-gpu/deepseekr1-gguf-onlineep-gpu.ipynb)
+
 ### Inference phi3 gguf model
 [phi3-gguf-online-endpoint.ipynb](./inference-phi3q-gguf/phi3-gguf-online-endpoint.ipynb)
 

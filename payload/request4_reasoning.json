@@ -1,0 +1,1 @@
+{"input_data":{"input_string": [{"role": "system", "content": "You are a helpful assistant."}, {"role": "user", "content": "I am struggling to understand MoE concept in LLMs. Help me break it down using first principles thinking. Start with the most fundamental ideas and build up from there."}],"parameters":{"temperature":0.7,"top_p":1,"max_new_tokens":3000}}}
