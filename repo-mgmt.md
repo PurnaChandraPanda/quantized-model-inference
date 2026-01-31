@@ -12,7 +12,7 @@ gh auth login
 ## follow git check-in commands
 ```
 git init
-git config --global --add safe.directory git config --global --add safe.directory /mnt/batch/tasks/shared/LS_root/mounts/clusters/cpuds11001/code/Users/pupanda/gpt-use-case/foundation-models/quantized-model-inference
+git config --global --add safe.directory /mnt/batch/tasks/shared/LS_root/mounts/clusters/cpud12001/code/Users/pupanda/gpt-use-case/foundation-models/quantized-model-inference
 git add .
 git status
 git config --global user.email "pupanda@outlook.com"

@@ -1,0 +1,5 @@
+azureml-inference-server-http==1.5.1
+numpy==2.4.1
+timesfm[torch]==1.3.0
+matplotlib==3.10.7
+torch
