@@ -10,6 +10,8 @@ gh auth login
 ```
 
 ## follow git check-in commands
+Update the safe.directory path to own compute instance as `../mounts/clusters/<ci_name>/code/Users/..`.
+
 ```
 git init
 git config --global --add safe.directory /mnt/batch/tasks/shared/LS_root/mounts/clusters/cpud12001/code/Users/pupanda/gpt-use-case/foundation-models/quantized-model-inference
