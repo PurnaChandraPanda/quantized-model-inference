@@ -59,6 +59,6 @@ In any model inferencing, following steps are carried out as base actions.
 [tinyllama-gguf-online-endpoint-gpu.ipynb](./inference-tinyllama1.1b-gguf-gpu/tinyllama-gguf-online-endpoint-gpu.ipynb)
 
 ### Inference cisco time-series model - cuda support
-- Follow detailed guidelines for ts model deploy as azureml managed online endpoint at [inference-cisco-ts](./inference-cisco-ts/)
+- Follow detailed guidelines for ts model deploy as azureml managed online endpoint at [inference-cisco-ts](./inference-cisco-ts/).
 - Run the notebook [3.cisco_ts_online_ep.ipynb](./inference-cisco-ts/3.cisco_ts_online_ep.ipynb)  for actual ts model as managed online deploy.
 
