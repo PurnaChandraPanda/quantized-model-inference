@@ -15,6 +15,9 @@ max_model_length=4096
 ## set to 1 for single sequence inference; set to >1 for batched inference (observe RAM/ latency/ throughput tradeoff)
 max_num_seqs=1
 
+## --enforce-eager can reduce startup complexity, although inference performance may be lower than a successfully compiled execution path
+## If this reaches API readiness, it confirms the delay is in the compilation/optimized execution path rather than model loading or KV-cache allocation
+
 vllm serve $model_dir \
   --served-model-name $llm_model \
   --dtype bfloat16 \

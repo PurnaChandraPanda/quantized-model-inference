@@ -127,7 +127,12 @@ python 7.1.requests_.test_online.endpoint.py --endpoint-name qwen08b-cpu1-endpoi
 2026-08-19 01:20:41,840 I [73] gunicorn.access - 127.0.0.1 - - [19/Aug/2026:01:20:41 +0000] "POST /score HTTP/1.0" 200 459 "-" "azure-ai-ml/1.34.1 azsdk-python-core/1.41.0 Python/3.11.15 (Linux-6.8.0-1059-azure-x86_64-with-glibc2.35)"
 ```
 
+# References
+- [VLLM: get started](https://docs.vllm.ai/en/stable/getting_started/installation/index.html)
 
+- [VLLM installation in cpu](https://docs.vllm.ai/en/stable/getting_started/installation/cpu/#supported-dtypes)
+
+- [Qwen3.5-08B model](https://huggingface.co/Qwen/Qwen3.5-0.8B)
 
 
 
