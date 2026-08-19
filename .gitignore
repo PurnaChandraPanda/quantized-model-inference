@@ -1,5 +1,6 @@
 *.amlignore
 *.amlignore.amltmp
+*.amltmp
 **/models/
 **/.amlgnore
 
