@@ -242,7 +242,7 @@ python 7.test_online_endpoint.py
 
 or
 
-python 7.1.requests_.test_online.endpoint.py --endpoint-name qwen08b-cpu1-endpoint
+python 7.1.requests_test_online_endpoint.py --endpoint-name qwen08b-gpu1-endpoint
 ```
 
 - Review the logs for endpoint on LLM inference transaction details for request processed
