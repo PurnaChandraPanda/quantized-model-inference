@@ -1,0 +1,10 @@
+# for manage endpoint inference server
+azureml-inference-server-http==1.5.1
+mlflow
+
+# for web hosting part
+fastapi
+uvicorn
+sse-starlette
+pydantic-settings
+starlette-context
